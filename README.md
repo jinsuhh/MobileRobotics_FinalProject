@@ -4,7 +4,7 @@
 * ROS-melodic
 ## ROS Directory
 * ttb3_multi_slam
-## 1. Requirements
+## 1. ROS Requirements
 ```
 $ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy \
   ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc \
@@ -27,13 +27,28 @@ sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
 ```
 ### 1-3. Multirobot Map Merge, Explore-lite, Navigation (move_base) packages
 ```
-$ sudo apt install ros-melodic-multirobot-map-merge ros-melodic-explore-lite ros-melodic-navigation
+sudo apt install ros-melodic-multirobot-map-merge ros-melodic-explore-lite ros-melodic-navigation
 ```
 ### 1-4. SLAM Gmapping
 ```
 $ git clone https://github.com/ros-perception/slam_gmapping
 ```
+## 2. Installation
+git clone this repo
+```
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws && catkin_make
+$ source devel/setup.bash
+```
 ## 2. How to run:
+* TURTLEBOT3_MODEL options: burger, waffle, waffle_pi (pick your model)
+```
+export TURTLEBOT3_MODEL=burger 
+```
+* Good to echo this in your ~/.bashrc, as you don't have to keep calling this when opening new terminal
+```
+echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+```
 * Terminal1:
 ```
 roslaunch ttb3_multi_slam final_multi_mapping.launch
