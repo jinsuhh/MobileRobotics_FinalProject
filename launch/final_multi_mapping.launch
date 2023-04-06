@@ -1,0 +1,94 @@
+<launch>
+    <!-- Arguments: Turtlebot3 Model, Namespace, Init Poses -->
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="move_forward_only" default="false"/>
+
+    <arg name="first_tb3"  default="tb3_0"/>
+    <arg name="second_tb3" default="tb3_1"/>
+    <arg name="third_tb3"  default="tb3_2"/>
+
+    <arg name="first_tb3_x_pos" default="-7.0"/>
+    <arg name="first_tb3_y_pos" default="-1.0"/>
+    <arg name="first_tb3_z_pos" default=" 0.0"/>
+    <arg name="first_tb3_yaw"   default=" 0.0"/>
+
+    <arg name="second_tb3_x_pos" default=" 7.0"/>
+    <arg name="second_tb3_y_pos" default="-1.0"/>
+    <arg name="second_tb3_z_pos" default=" 0.0"/>
+    <arg name="second_tb3_yaw"   default=" 0.0"/>
+
+    <arg name="third_tb3_x_pos" default=" 0.5"/>
+    <arg name="third_tb3_y_pos" default=" 3.0"/>
+    <arg name="third_tb3_z_pos" default=" 0.0"/>
+    <arg name="third_tb3_yaw"   default=" 0.0"/>
+
+     <!-- Spawn Gazebo Environment + Multiple Turtlebot3's-->
+    <include file="$(find ttb3_multi_slam)/launch/multi_turtlebot3.launch">
+        <arg name="model" value="$(arg model)"/>
+        <arg name="first_tb3_x_pos" value="$(arg first_tb3_x_pos)"/>
+        <arg name="first_tb3_y_pos" value="$(arg first_tb3_y_pos)"/>
+        <arg name="first_tb3_z_pos" value="$(arg first_tb3_z_pos)"/>
+        <arg name="first_tb3_yaw"   value="$(arg first_tb3_yaw)"/>
+
+        <arg name="second_tb3_x_pos" value="$(arg second_tb3_x_pos)"/>
+        <arg name="second_tb3_y_pos" value="$(arg second_tb3_y_pos)"/>
+        <arg name="second_tb3_z_pos" value="$(arg second_tb3_z_pos)"/>
+        <arg name="second_tb3_yaw"   value="$(arg second_tb3_yaw)"/>
+
+        <arg name="third_tb3_x_pos" value="$(arg third_tb3_x_pos)"/>
+        <arg name="third_tb3_y_pos" value="$(arg third_tb3_y_pos)"/>
+        <arg name="third_tb3_z_pos" value="$(arg third_tb3_z_pos)"/>
+        <arg name="third_tb3_yaw"   value="$(arg third_tb3_yaw)"/>
+    </include>
+
+    <!-- Run preset Rviz environment -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ttb3_multi_slam)/rviz/multi_turtlebot3_slam.rviz" />
+
+    <!-- Turtlebot3 SLAM (gmapping)-->
+    <include file="$(find ttb3_multi_slam)/launch/multi_turtlebot3_slam.launch">
+        <arg name="ns" value="tb3_0"/>
+    </include>
+    <include file="$(find ttb3_multi_slam)/launch/multi_turtlebot3_slam.launch">
+        <arg name="ns" value="tb3_1"/>
+    </include>
+    <include file="$(find ttb3_multi_slam)/launch/multi_turtlebot3_slam.launch">
+        <arg name="ns" value="tb3_2"/>
+    </include>
+
+    <!-- Move base -->
+    <include ns="$(arg first_tb3)" file="$(find ttb3_multi_slam)/launch/multi_move_base.launch">
+        <arg name="model" value="$(arg model)" />
+        <arg name="cmd_vel_topic" value="cmd_vel"/>
+        <arg name="robot_ns" value="$(arg first_tb3)"/>
+    </include>
+
+    <include ns="$(arg second_tb3)" file="$(find ttb3_multi_slam)/launch/multi_move_base.launch">
+        <arg name="model" value="$(arg model)" />
+        <arg name="cmd_vel_topic" value="cmd_vel"/>
+        <arg name="robot_ns" value="$(arg second_tb3)"/>
+    </include>
+
+    <include ns="$(arg third_tb3)" file="$(find ttb3_multi_slam)/launch/multi_move_base.launch">
+        <arg name="model" value="$(arg model)" />
+        <arg name="cmd_vel_topic" value="cmd_vel"/>
+        <arg name="robot_ns" value="$(arg third_tb3)"/>
+    </include>
+
+    <!-- Multi-robot Map Merging -->
+    <include file="$(find ttb3_multi_slam)/launch/multi_map_merge.launch">
+        <arg name="first_tb3_x_pos" value="$(arg first_tb3_x_pos)"/>
+        <arg name="first_tb3_y_pos" value="$(arg first_tb3_y_pos)"/>
+        <arg name="first_tb3_z_pos" value="$(arg first_tb3_z_pos)"/>
+        <arg name="first_tb3_yaw"   value="$(arg first_tb3_yaw)"/>
+
+        <arg name="second_tb3_x_pos" value="$(arg second_tb3_x_pos)"/>
+        <arg name="second_tb3_y_pos" value="$(arg second_tb3_y_pos)"/>
+        <arg name="second_tb3_z_pos" value="$(arg second_tb3_z_pos)"/>
+        <arg name="second_tb3_yaw"   value="$(arg second_tb3_yaw)"/>
+
+        <arg name="third_tb3_x_pos" value="$(arg third_tb3_x_pos)"/>
+        <arg name="third_tb3_y_pos" value="$(arg third_tb3_y_pos)"/>
+        <arg name="third_tb3_z_pos" value="$(arg third_tb3_z_pos)"/>
+        <arg name="third_tb3_yaw"   value="$(arg third_tb3_yaw)"/>
+    </include>
+</launch>
