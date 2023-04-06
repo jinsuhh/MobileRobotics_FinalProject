@@ -52,11 +52,11 @@ export TURTLEBOT3_MODEL=burger
 ```
 echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
 ```
-* Terminal1:
+* Terminal1: Set up mapping and robot environment
 ```
 roslaunch ttb3_multi_slam final_multi_mapping.launch
 ```
-* Terminal2:
+* Terminal2: Robot should start moving after this command. Sit back and let them explore the map for you.
 ```
 roslaunch ttb3_multi_slam final_multi_explore.launch 
 ```
