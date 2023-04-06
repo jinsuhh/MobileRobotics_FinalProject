@@ -34,9 +34,9 @@ sudo apt install ros-melodic-multirobot-map-merge ros-melodic-explore-lite ros-m
 $ git clone https://github.com/ros-perception/slam_gmapping
 ```
 ## 2. Installation
-git clone this repo
 ```
 $ mkdir -p ~/catkin_ws/src
+$ git clone {THIS_REPO}
 $ cd ~/catkin_ws && catkin_make
 ```
 ## 2. How to run:
