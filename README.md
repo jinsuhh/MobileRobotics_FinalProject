@@ -38,9 +38,12 @@ git clone this repo
 ```
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws && catkin_make
-$ source devel/setup.bash
 ```
 ## 2. How to run:
+* Everytime you open a new terminal you have to source!
+```
+$ ~/catkin_ws source devel/setup.bash
+```
 * TURTLEBOT3_MODEL options: burger, waffle, waffle_pi (pick your model)
 ```
 export TURTLEBOT3_MODEL=burger 
