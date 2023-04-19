@@ -15,7 +15,6 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
-  tf
   visualization_msgs
 )
 
@@ -210,3 +209,7 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(listener src/publisher.cpp)
+target_link_libraries(listener ${catkin_LIBRARIES})
+# add_dependencies(listener nav_msgs)
