@@ -62,6 +62,12 @@ roslaunch ttb3_multi_slam final_multi_mapping.launch
 roslaunch ttb3_multi_slam final_multi_explore.launch 
 ```
 ---
+
+## 2. Acknowledgments:
+* Special thanks to Professor Maani Ghaffari Jadidi and the Mobile Robotics Graduate Student Instructors for helping guide our project and providing support in completing the project.
+```
+---
+
 ## Reference
 [Turtlebot3 Simulation Tutorial](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)<br>
 [move_base](http://wiki.ros.org/move_base)<br>
