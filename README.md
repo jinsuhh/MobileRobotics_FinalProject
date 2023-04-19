@@ -1,4 +1,5 @@
 # MobileRobotics_FinalProject
+This is ROB530 Team 11 Final project on Real-time multi-agent Simultaneous Localization and Mapping (SLAM) and map fusion. This project implements the multi-agent SLAM in simulation using Turtlebot3s and different Turtlebot world environments.
 ## Environment
 * Ubuntu 18.04
 * ROS-melodic
