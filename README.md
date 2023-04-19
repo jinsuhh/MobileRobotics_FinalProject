@@ -40,7 +40,7 @@ $ mkdir -p ~/catkin_ws/src
 $ git clone {THIS_REPO}
 $ cd ~/catkin_ws && catkin_make
 ```
-## 2. How to run:
+## 3. How to run:
 * Everytime you open a new terminal you have to source!
 ```
 $ ~/catkin_ws source devel/setup.bash
@@ -63,12 +63,12 @@ roslaunch ttb3_multi_slam final_multi_explore.launch
 ```
 ---
 
-## 2. Acknowledgments:
+## 4. Acknowledgments:
 * Special thanks to Professor Maani Ghaffari Jadidi and the Mobile Robotics Graduate Student Instructors for helping guide our project and providing support in completing the project.
 ```
 ---
 
-## Reference
+## 5. References:
 [Turtlebot3 Simulation Tutorial](https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/)<br>
 [move_base](http://wiki.ros.org/move_base)<br>
 [gmapping](http://wiki.ros.org/gmapping)<br>
